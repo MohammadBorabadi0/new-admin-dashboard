@@ -1,22 +1,28 @@
 import { useStateContext } from "../context/StateProvider";
 
-// Data
-import { LineChartData, chartData } from "../data/data";
-
 // Icons
 import { IoNotificationsOutline, AiOutlineMessage } from "../data/icons";
-import LineChartComponent from "./LineChartComponent";
+import Section1 from "./Section1";
+import Section2 from "./Section2";
+import Section3 from "./Section3";
 
 const Main = () => {
-  const { isOpen, setIsOpen } = useStateContext();
+  const { isOpen } = useStateContext();
 
   return (
-    <main className={`min-h-screen w-full my-8 mx-2`}>
-      <nav className="flex justify-between items-center">
-        <h2 className="text-lg lg:text-2xl font-extrabold">Hello, James!</h2>
+    <main
+      className={`min-h-screen w-full ${
+        isOpen ? "sm:ml-[235px]" : "sm:ml-[110px]"
+      }`}
+    >
+      <nav className="flex  items-center justify-between">
+        <h2 className="flex items-center gap-2 text-lg lg:text-2xl font-extrabold">
+          Hello, James!
+          <img src="/img/hand.png" alt="hand" className="w-8" />
+        </h2>
         <div className="flex items-center gap-2">
-          <IoNotificationsOutline size={25} className="cursor-pointer" />
-          <AiOutlineMessage size={25} className="cursor-pointer" />
+          <IoNotificationsOutline className="cursor-pointer text-xl md:text-2xl" />
+          <AiOutlineMessage className="cursor-pointer text-xl md:text-2xl" />
           <img
             src="/img/avatar.jpg"
             alt="avatar"
@@ -24,23 +30,11 @@ const Main = () => {
           />
         </div>
       </nav>
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mt-6">
-        {chartData.map((chart, index) => (
-          <div
-            key={index}
-            className="shadow-sm h-72 rounded-md flex items-center justify-center"
-          >
-            <LineChartComponent
-              title={chart.title}
-              bgColor={chart.bgColor}
-              stroke={chart.strock}
-              amount={chart.amount}
-              change_24h={chart.change_24h}
-              data={LineChartData[`data${index + 1}`]}
-            />
-          </div>
-        ))}
-      </section>
+      <main className="mx-2">
+        <Section1 isOpen={isOpen} />
+        <Section2 />
+        <Section3 />
+      </main>
     </main>
   );
 };

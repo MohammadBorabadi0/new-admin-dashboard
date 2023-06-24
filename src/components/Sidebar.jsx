@@ -25,15 +25,15 @@ const Sidebar = () => {
     <div
       className={`${
         isOpen ? "w-52" : "w-20"
-      }  bg-purple-600 text-white mx-2 my-4 rounded-3xl relative shadow-2xl`}
+      } hidden sm:block bg-purple-600 text-white mx-2 my-4 rounded-3xl fixed h-[95%] shadow-2xl`}
     >
       <span
         onClick={() => setIsOpen(!isOpen)}
-        className="absolute right-[-13px] cursor-pointer top-10 px-2 py-1 bg-gray-100 shadow-md text-black rounded-full"
+        className="absolute right-[-13px] cursor-pointer top-10 px-2 py-1.5 bg-gray-100 shadow-md text-black rounded-full"
       >
         {isOpen ? <FiChevronLeft size={18} /> : <FiChevronRight size={18} />}
       </span>
-      <ul className="flex flex-col items-center gap-6 mt-20">
+      <ul className="flex flex-col items-center gap-4 lg:gap-6 mt-8 lg:mt-20">
         {data.map((item, index) => (
           <li
             key={index}
