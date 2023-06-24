@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #f8fafb;
+}
+
+.title {
+    padding: 10px 16px;
+    font-weight: 900;
+    font-size: 22px;
+}
